@@ -19,7 +19,7 @@ import javax.persistence.TypedQuery;
 public class ProdutoDAO {
 
     //Criando Unidade de Persistencia
-    final EntityManagerFactory factory = Persistence.createEntityManagerFactory("teste.jsf");
+    final EntityManagerFactory factory = Persistence.createEntityManagerFactory("bd_intel.jsf");
     final EntityManager em = factory.createEntityManager();
     
     public void salvar(Produto p) {

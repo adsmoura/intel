@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro Intel</title>
+    </h:head>
+    <h:body>
+    <h:form id="cadProduto">
+        <h:outputLabel value="ID" for="txtCodigo"/>
+        <h:inputText id="txtCodigo" value="#{produtoBean.p.codigo}"/>
+        <br/>
+        <h:outputLabel value="Nome" for="txtNome"/>
+        <h:inputText id="txtNome" value="#{produtoBean.p.nome}"/>
+        <br/>
+        <h:outputLabel value="Departamento" for="txtDepartamento"/>
+        <h:inputText id="txtDepartamento" value="#{produtoBean.p.departamento}"/>
+        <br/>
+        <h:outputLabel value="Fabricante" for="txtFabricante"/>
+        <h:inputText id="txtfabricante" value="#{produtoBean.p.fabricante}"/>
+        <br/>
+        <h:outputLabel value="Quantidade" for="txtQuantidade"/>
+        <h:inputText id="txtQuantidade" value="#{produtoBean.p.quantidade}">
+        <br/>
+                <h:outputLabel value="Preço Unidade" for="txtPrecoUnitario"/>
+                <h:inputText id="txtPrecoUnitario" value="#{produtoBean.p.precoUnitario}">
+        <br/>
+        </h:inputText>
+        <br/>
+        <h:commandButton value="Salvar" action="#{produtoBean.salvarProduto}">
+            <f:ajax execute="@form" render="tabelaProduto"/>
+        </h:commandButton>
+    </h:form>
+        <br/><br/>
+        <h:dataTable id="tabelaProduto" value="#{produtoBean.produto}" var="produto">
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                <h:outputText value="#{produto.nome}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Departamento</f:facet>
+                <h:outputText value="#{produto.departamento}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Fabricante</f:facet>
+                <h:outputText value="#{produto.fabricante}">                    
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Quantidade</f:facet>
+                <h:outputText value="#{produto.quantidade}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Preço Unidade</f:facet>
+                <h:outputText value="#{produto.precoUnitario}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Excluir</f:facet>
+                <h:form>
+                    <h:commandLink action="#{produtoBean.excluirProduto(produto)}" value="[X]">
+                        <f:ajax execute="@this" render="tabelaProduto"/>
+                    </h:commandLink>
+                </h:form>
+            </h:column>
+        </h:dataTable>
+    </h:body>
+</html>

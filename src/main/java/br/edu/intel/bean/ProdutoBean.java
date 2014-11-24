@@ -25,7 +25,7 @@ public class ProdutoBean {
     
     private final ProdutoDAO pDao = new ProdutoDAO();
     
-    public void salvarProduto(Produto p){
+    public void salvarProduto(){
         pDao.salvar(p);
         p = new Produto();
         carregaLista();
